@@ -7,7 +7,7 @@ const name = ref('')
 const input_content = ref('')
 const input_category = ref(null)
 
-const todos_asc = computed(() => todos.value.sort((a, b) =>  a.created - b.created ))
+const todos_asc = computed(() => todos.value.sort((a, b) => a.created - b.created))
 
 const addTodo = () => {
   if (input_content.value.trim() === '' || input_category.value === null) return

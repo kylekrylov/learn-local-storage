@@ -27,16 +27,21 @@ button {
   appearance: none;
 }
 
+input[type='radio'],
+input[type='checkbox'] {
+  display: none;
+}
+
 body {
+  max-width: 900px;
+  margin: 0 auto;
   color: var(--dark);
   background: var(--light);
 }
 
 section {
-  padding-right: 1.5em;
-  padding-left: 1.5rem;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  padding: 0 1.5rem;
+  margin: 2rem 0;
 }
 
 h3 {
@@ -53,21 +58,21 @@ h4 {
   color: var(--grey);
 }
 
-.greeting .title {
-  display: flex;
-}
+.greeting {
+  .title {
+    display: flex;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--dark);
 
-.greeting .title input {
-  flex: 1 1 0%;
-  min-width: 0;
-  margin-left: 0.5rem;
-}
-
-.greeting .title,
-.greeting .title input {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--dark);
+    input {
+      flex: 1 1 0%;
+      min-width: 0;
+      margin-left: 0.5rem;
+      font: inherit;
+      color: inherit;
+    }
+  }
 }
 
 .create-todo {
@@ -124,11 +129,6 @@ h4 {
       }
     }
   }
-}
-
-input[type='radio'],
-input[type='checkbox'] {
-  display: none;
 }
 
 .bubble {
@@ -194,9 +194,12 @@ input:checked ~ .bubble::after {
   box-shadow: var(--shadow);
 
   .todo-content {
-    flex: 1 1 0%;
+    flex: 1 1 100%;
+    width: 100%;
+    margin-right: 1rem;
 
     input {
+      width: 100%;
       font-size: 1.125rem;
       color: var(--dark);
     }
@@ -229,8 +232,32 @@ input:checked ~ .bubble::after {
     }
   }
 
-  &.done .todo-content input {
-    color: var(--grey);
-    text-decoration: line-through;
+  &.done {
+    .todo-content {
+      input {
+        color: var(--grey);
+        text-decoration: line-through;
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  section {
+    padding: 0 0.5rem;
+    margin: 1rem 0;
+  }
+
+  .create-todo {
+    .options {
+      // .options__label
+      &__label {
+        padding: 1rem 0.25rem;
+
+        div {
+          margin-top: 0.25rem;
+        }
+      }
+    }
   }
 }
